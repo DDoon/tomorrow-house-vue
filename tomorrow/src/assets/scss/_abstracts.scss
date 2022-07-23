@@ -1,9 +1,22 @@
 @charset "UTF-8";
 
-// Abstracts
-@import "~@/assets/scss/abstracts/mixins.scss";
-@import "~@/assets/scss/abstracts/colors.scss";
-@import "~@/assets/scss/abstracts/typography.scss";
+// Mixins
+@import "~@/assets/scss/mixins/flexbox.scss";
+@import "~@/assets/scss/mixins/line-clamp.scss";
+@import "~@/assets/scss/mixins/positions.scss";
+@import "~@/assets/scss/mixins/responsive.scss";
+@import "~@/assets/scss/mixins/scrollbar.scss";
+@import "~@/assets/scss/mixins/star-rating.scss";
+@import "~@/assets/scss/mixins/text-style.scss";
+@import "~@/assets/scss/mixins/truncate.scss";
 
 
-// Vendors
+// Constants
+@import "~@/assets/scss/constants/box-shadows.scss";
+@import "~@/assets/scss/constants/breakpoints.scss";
+@import "~@/assets/scss/constants/colors.scss";
+@import "~@/assets/scss/constants/dimensions.scss";
+@import "~@/assets/scss/constants/grids.scss";
+@import "~@/assets/scss/constants/typography.scss";
+@import "~@/assets/scss/constants/z-indexes.scss";
+

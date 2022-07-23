@@ -3,13 +3,23 @@
 
 // Base
 @import "~@/assets/scss/base/fonts.scss";
+@import "~@/assets/scss/base/globals.scss";
+
 
 // Layouts
 @import "~@/assets/scss/layouts/global-header.scss";
 
 
 // Modules
+@import "~@/assets/scss/modules/avatars.scss";
+@import "~@/assets/scss/modules/buttons.scss";
+@import "~@/assets/scss/modules/forms.scss";
 @import "~@/assets/scss/modules/icons.scss";
+@import "~@/assets/scss/modules/pagination.scss";
+@import "~@/assets/scss/modules/prices.scss";
+@import "~@/assets/scss/modules/star-ratings.scss";
+@import "~@/assets/scss/modules/tags.scss";
+
 
 
 // Vendors

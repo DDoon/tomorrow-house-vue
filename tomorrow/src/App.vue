@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<TheHeader />
-		<router-view></router-view>
 	</div>
 </template>
 
@@ -16,5 +15,5 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
-@import '~@/assets/scss/common';
+@import '~@/assets/scss/common.scss';
 </style>
