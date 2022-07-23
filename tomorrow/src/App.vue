@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<TheHeader />
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -14,4 +15,6 @@ import TheHeader from './components/Layouts/TheHeader.vue';
 export default class App extends Vue {}
 </script>
 
-<style></style>
+<style lang="scss">
+@import '~@/assets/scss/common';
+</style>
