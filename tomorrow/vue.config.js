@@ -3,9 +3,9 @@ module.exports = defineConfig({
 	transpileDependencies: true,
 	css: {
 		loaderOptions: {
-			scss: {
+			sass: {
 				additionalData: `
-        @import "@/assets/scss/abstracts.scss";
+        @import "@/assets/scss/_abstracts.scss";
     `,
 			},
 		},

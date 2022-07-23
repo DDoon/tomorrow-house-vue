@@ -4,6 +4,9 @@
 // Base
 @import "~@/assets/scss/base/fonts.scss";
 
+// Layouts
+@import "~@/assets/scss/layouts/global-header.scss";
+
 
 // Modules
 @import "~@/assets/scss/modules/icons.scss";
@@ -11,3 +14,5 @@
 
 // Vendors
 @import "~@/assets/scss/vendors/normalize.scss";
+@import "~@/assets/scss/vendors/reset.scss";
+
