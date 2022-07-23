@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
 
+// Base
+@import "~@/assets/scss/base/fonts.scss";
+
+
+// Modules
+@import "~@/assets/scss/modules/icons.scss";
+
+
 // Vendors
 @import "~@/assets/scss/vendors/normalize.scss";
