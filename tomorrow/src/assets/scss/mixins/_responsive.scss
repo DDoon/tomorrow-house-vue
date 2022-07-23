@@ -12,7 +12,7 @@
 }
 
 @mixin mobile-only() {
-  @media screen and (max-width: $md-breakpoint - 1px) {
+  @media screen and (max-width: $md-breakpoint - 1) {
     @content;
   }
 }

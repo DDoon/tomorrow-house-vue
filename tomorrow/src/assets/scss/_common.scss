@@ -6,8 +6,17 @@
 @import "~@/assets/scss/base/globals.scss";
 
 
+// Components
+@import "~@/assets/scss/components/gnb-nav.scss";
+
+
 // Layouts
 @import "~@/assets/scss/layouts/global-header.scss";
+@import "~@/assets/scss/layouts/global-footer.scss";
+@import "~@/assets/scss/layouts/gnb.scss";
+@import "~@/assets/scss/layouts/lnb.scss";
+@import "~@/assets/scss/layouts/grids.scss";
+
 
 
 // Modules
@@ -19,7 +28,6 @@
 @import "~@/assets/scss/modules/prices.scss";
 @import "~@/assets/scss/modules/star-ratings.scss";
 @import "~@/assets/scss/modules/tags.scss";
-
 
 
 // Vendors
