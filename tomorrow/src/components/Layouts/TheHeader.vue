@@ -19,7 +19,7 @@
 										<li class="gnb-nav-item is-active">
 											<a href="/">스토어</a>
 										</li>
-										<li class="gnb-nav-item"><a href="/">인테리어시공</a></li>
+										<li class="gnb-nav-item"><a href="/">맞춤업체찾기</a></li>
 									</ul>
 								</nav>
 
