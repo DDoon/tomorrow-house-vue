@@ -7,5 +7,3 @@ export default {
 	name: 'ProductDetailPage',
 };
 </script>
-
-<style lang="scss" scoped></style>

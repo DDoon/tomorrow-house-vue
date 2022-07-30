@@ -23,13 +23,13 @@
 									</ul>
 								</nav>
 
-								<button
-									class="gnb-icon-button is-menu sm-only"
+								<CommonIcon
+									@click.native="toggleSidebar"
+									:iconClass="iconClass"
+									:iconShape="iconMenu"
+									:iconAria="iconAria"
 									type="button"
-									aria-label="메뉴 열기 버튼"
-								>
-									<i class="ic-menu"></i>
-								</button>
+								/>
 							</div>
 
 							<div class="gnb-right">
@@ -180,13 +180,6 @@
                       <a href="/">회원가입</a>
                     </div>
                   </div> -->
-
-								<CommonIcon
-									:iconClass="iconClass"
-									:iconShape="iconChevron"
-									:btnText="btnText"
-									type="button"
-								/>
 							</div>
 						</div>
 					</div>
@@ -194,21 +187,41 @@
 			</div>
 		</div>
 		<TheLnb />
+		<TheSidebar :class="isActiveSidebar" :isActive="isActive" />
+		<TheOverlay :class="isActiveSidebar" @offSidebar="offSidebar" />
 	</header>
 </template>
 
 <script>
-import CommonIcon from '@/components/Common/CommonIcon.vue';
 import TheLnb from '@/components/Layouts/TheLnb.vue';
+import TheSidebar from '@/components/Layouts/TheSidebar.vue';
+import TheOverlay from '@/components/Layouts/TheOverlay.vue';
+import CommonIcon from '@/components/Common/CommonIcon.vue';
+
 export default {
-	components: { CommonIcon, TheLnb },
+	components: { TheLnb, TheSidebar, TheOverlay, CommonIcon },
 	name: 'TheHeader',
 	data() {
 		return {
-			iconClass: 'btn-primary btn-40 sm-hidden',
-			iconChevron: 'ic-chevron',
-			btnText: '글쓰기',
+			isActive: false,
+			// CommoIcon
+			iconClass: 'gnb-icon-button is-menu sm-only',
+			iconMenu: 'ic-menu',
+			iconAria: '메뉴 열기 버튼',
 		};
+	},
+	computed: {
+		isActiveSidebar() {
+			return this.isActive ? 'is-active' : false;
+		},
+	},
+	methods: {
+		toggleSidebar() {
+			this.isActive = !this.isActive;
+		},
+		offSidebar() {
+			this.isActive = false;
+		},
 	},
 };
 </script>

@@ -1,7 +1,6 @@
 .lnb {
   $lnb-link-padding: 8px;
 
-  @include no-scrollbar;
   overflow-x: auto;
   background-color: $white;
 

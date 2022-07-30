@@ -1,5 +1,5 @@
 <template>
-	<button :class="iconClass">
+	<button :class="iconClass" :aria-label="iconAria">
 		{{ btnText }}
 		<i :class="iconShape" aria-hidden="true"></i>
 	</button>
@@ -11,8 +11,13 @@ export default {
 	props: {
 		iconClass: {
 			type: String,
+			required: true,
 		},
 		iconShape: {
+			type: String,
+			required: true,
+		},
+		iconAria: {
 			type: String,
 			required: true,
 		},
