@@ -35,19 +35,24 @@
 				</button>
 
 				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list">
+					<ul class="drawer-menu-list" :class="isActiveDrawer">
 						<li
 							v-for="item in sidebarItems"
 							:key="item.id"
+							@click="toggleDrawer"
+							:isActive2="isActive2"
 							class="drawer-menu-item"
 						>
-							<a :to="item.link">{{ item.title }}</a>
+							<a :to="item.link"
+								>{{ item.title }}
+								<i :class="item.icon" lang="en" aria-label="New"></i>
+							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 
-			<div class="drawer-menu is-store is-active is-open">
+			<div class="drawer-menu is-store">
 				<button class="drawer-menu-button" type="button">
 					<i class="ic-store" aria-hidden></i>
 					스토어
@@ -55,40 +60,18 @@
 				</button>
 
 				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list">
+					<ul class="drawer-menu-list" :class="isActiveDrawer">
 						<li
 							v-for="item in drawerItems"
 							:key="item.id"
+							@click="toggleDrawer"
+							:isActive2="isActive2"
 							class="drawer-menu-item"
 						>
-							<a href="/">스토어</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">카테고리</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">신혼가구</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">베스트</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">오늘의딜</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">연휴특가</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">월동준비</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">리퍼마켓</a>
-						</li>
-						<li class="drawer-menu-item is-active">
-							<a href="/">
-								기획전
-								<i class="ic-new" lang="en" aria-label="New"></i>
-							</a>
+							<a href="/"
+								>{{ item.title }}
+								<i :class="item.icon" lang="en" aria-label="New"></i
+							></a>
 						</li>
 					</ul>
 				</div>
@@ -97,17 +80,23 @@
 			<div class="drawer-menu is-expert">
 				<button class="drawer-menu-button" type="button">
 					<i class="ic-expert" aria-hidden></i>
-					인테리어시공
+					맞춤업체찾기
 					<i class="ic-chevron" aria-hidden></i>
 				</button>
 
 				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list">
-						<li class="drawer-menu-item">
-							<a href="/">시공홈</a>
-						</li>
-						<li class="drawer-menu-item">
-							<a href="/">시공스토어</a>
+					<ul class="drawer-menu-list" :class="isActiveDrawer">
+						<li
+							v-for="item in drawerItemsTwo"
+							:key="item.id"
+							@click="toggleDrawer"
+							:isActive2="isActive2"
+							class="drawer-menu-item"
+						>
+							<a href="/"
+								>{{ item.title }}
+								<i :class="item.icon" lang="en" aria-label="New"></i>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -116,20 +105,15 @@
 			<!-- NOTE: 로그인을 한 경우  -->
 			<div class="sidebar-user-menu">
 				<ul class="user-menu-list">
-					<li class="user-menu-item">
-						<a href="/">마이페이지</a>
-					</li>
-					<li class="user-menu-item">
-						<a href="/">나의 쇼핑</a>
-					</li>
-					<li class="user-menu-item">
-						<a href="/">스크랩북</a>
-					</li>
-					<li class="user-menu-item">
-						<a href="/">알림</a>
-					</li>
-					<li class="user-menu-item">
-						<a href="/">이벤트</a>
+					<li
+						v-for="item in drawerItemsMenu"
+						:key="item.id"
+						class="user-menu-item"
+					>
+						<a href="/"
+							>{{ item.title }}
+							<i :class="item.icon" lang="en" aria-label="New"></i>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -148,6 +132,7 @@ export default {
 	},
 	data() {
 		return {
+			isActive2: false,
 			sidebarItems: [
 				{
 					id: 1,
@@ -190,7 +175,125 @@ export default {
 					title: '이벤트',
 				},
 			],
+			drawerItems: [
+				{
+					id: 1,
+					title: '카테고리',
+				},
+				{
+					id: 2,
+					title: '신혼가구',
+				},
+				{
+					id: 3,
+					title: '베스트',
+				},
+				{
+					id: 4,
+					title: '오늘의딜',
+				},
+				{
+					id: 5,
+					title: '연휴특가',
+				},
+				{
+					id: 6,
+					title: '월동준비',
+				},
+				{
+					id: 7,
+					title: '리퍼마켓',
+				},
+				{
+					id: 8,
+					title: '기획전',
+					icon: 'ic-new',
+				},
+			],
+			drawerItemsTwo: [
+				{
+					id: 1,
+					title: '홈',
+				},
+				{
+					id: 2,
+					title: '인테리어시공',
+				},
+				{
+					id: 3,
+					title: '이사',
+				},
+				{
+					id: 4,
+					title: '설치수리',
+				},
+				{
+					id: 5,
+					title: '우리동네아파트',
+				},
+			],
+			drawerItemsMenu: [
+				{
+					id: 1,
+					title: '마이페이지',
+					icon: 'ic-new',
+				},
+				{
+					id: 2,
+					title: '나의 쇼핑',
+				},
+				{
+					id: 3,
+					title: '스크랩북',
+				},
+				{
+					id: 4,
+					title: '알림',
+				},
+				{
+					id: 5,
+					title: '이벤트',
+				},
+				{
+					id: 6,
+					title: '사진 올리기',
+				},
+				{
+					id: 7,
+					title: '집들이 글쓰기',
+				},
+				{
+					id: 8,
+					title: '노하우 글쓰기',
+				},
+				{
+					id: 9,
+					title: '상품 리뷰 쓰기',
+				},
+				{
+					id: 10,
+					title: '시공 전문가 리뷰 쓰기',
+				},
+				{
+					id: 11,
+					title: '인테리어 질문하기',
+				},
+				{
+					id: 12,
+					title: '고객센터',
+				},
+			],
 		};
+	},
+	computed: {
+		isActiveDrawer() {
+			return this.isActive2 ? 'is-active is-open' : false;
+		},
+	},
+	methods: {
+		toggleDrawer() {
+			this.isActive2 = !this.isActive2;
+		},
 	},
 };
 </script>
