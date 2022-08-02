@@ -1,5 +1,9 @@
 <template>
-	<div @click="offSidebar" class="overlay sm-only" aria-hidden="true"></div>
+	<div
+		@click.self="offSidebar"
+		class="overlay sm-only"
+		aria-hidden="true"
+	></div>
 </template>
 
 <script>

@@ -1,7 +1,6 @@
 .sidebar {
   $sidebar-width: 240px;
 
-  @include no-scrollbar;
   position: fixed;
   top: 0;
   left: 0;

@@ -2,7 +2,6 @@
 	<div id="app">
 		<TheHeader />
 		<TheFooter />
-		<TheSidebar />
 	</div>
 </template>
 
@@ -10,10 +9,9 @@
 import { Component, Vue } from 'vue-property-decorator';
 import TheFooter from './components/Layouts/TheFooter.vue';
 import TheHeader from './components/Layouts/TheHeader.vue';
-import TheSidebar from './components/Layouts/TheSidebar.vue';
 
 @Component({
-	components: { TheHeader, TheFooter, TheSidebar },
+	components: { TheHeader, TheFooter },
 })
 export default class App extends Vue {}
 </script>
