@@ -26,20 +26,47 @@
 
 		<nav class="sidebar-nav">
 			<h2 class="visually-hidden">메뉴</h2>
+			<div
+				v-for="item in drawerItems"
+				:key="item.id"
+				:class="isActiveDrawer"
+				class="drawer-menu is-community"
+			>
+				<button @click="toggleDrawer" class="drawer-menu-button" type="button">
+					<i class="ic-community" aria-hidden></i>
+					{{ item.text }}
+					<i class="ic-chevron" aria-hidden></i>
+				</button>
 
-			<div class="drawer-menu is-community">
-				<button class="drawer-menu-button" type="button">
+				<div class="drawer-menu-content">
+					<ul class="drawer-menu-list">
+						<li
+							v-for="drawer in item.drawerList"
+							:key="drawer.id"
+							:isActive2="isActive2"
+							class="drawer-menu-item"
+						>
+							<a :to="drawer.link"
+								>{{ drawer.title }}
+								<i :class="drawer.icon" lang="en" aria-label="New"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- <div :class="isActiveDrawer" class="drawer-menu is-community">
+				<button @click="toggleDrawer" class="drawer-menu-button" type="button">
 					<i class="ic-community" aria-hidden></i>
 					커뮤니티
 					<i class="ic-chevron" aria-hidden></i>
 				</button>
 
 				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list" :class="isActiveDrawer">
+					<ul class="drawer-menu-list">
 						<li
 							v-for="item in sidebarItems"
 							:key="item.id"
-							@click="toggleDrawer"
 							:isActive2="isActive2"
 							class="drawer-menu-item"
 						>
@@ -50,21 +77,20 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="drawer-menu is-store">
-				<button class="drawer-menu-button" type="button">
+			<!-- <div :class="isActiveDrawer" class="drawer-menu is-store">
+				<button @click="toggleDrawer" class="drawer-menu-button" type="button">
 					<i class="ic-store" aria-hidden></i>
 					스토어
 					<i class="ic-chevron" aria-hidden></i>
 				</button>
 
 				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list" :class="isActiveDrawer">
+					<ul class="drawer-menu-list">
 						<li
 							v-for="item in drawerItems"
 							:key="item.id"
-							@click="toggleDrawer"
 							:isActive2="isActive2"
 							class="drawer-menu-item"
 						>
@@ -75,22 +101,25 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="drawer-menu is-expert">
-				<button class="drawer-menu-button" type="button">
+			<!-- <div :class="isActiveDrawer" class="drawer-menu is-expert">
+				<button
+					@click="toggleDrawer"
+					:isActive2="isActive2"
+					class="drawer-menu-button"
+					type="button"
+				>
 					<i class="ic-expert" aria-hidden></i>
 					맞춤업체찾기
 					<i class="ic-chevron" aria-hidden></i>
 				</button>
 
 				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list" :class="isActiveDrawer">
+					<ul class="drawer-menu-list">
 						<li
 							v-for="item in drawerItemsTwo"
 							:key="item.id"
-							@click="toggleDrawer"
-							:isActive2="isActive2"
 							class="drawer-menu-item"
 						>
 							<a href="/"
@@ -100,10 +129,10 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- NOTE: 로그인을 한 경우  -->
-			<div class="sidebar-user-menu">
+			<!-- <div class="sidebar-user-menu">
 				<ul class="user-menu-list">
 					<li
 						v-for="item in drawerItemsMenu"
@@ -116,7 +145,7 @@
 						</a>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 		</nav>
 	</aside>
 </template>
@@ -133,154 +162,173 @@ export default {
 	data() {
 		return {
 			isActive2: false,
-			sidebarItems: [
-				{
-					id: 1,
-					link: '/main',
-					title: '홈',
-				},
-				{
-					id: 2,
-					link: '/main',
-					title: '사진',
-				},
-				{
-					id: 3,
-					link: '/main',
-					title: '집들이',
-				},
-				{
-					id: 4,
-					link: '/main',
-					title: '노하우',
-				},
-				{
-					id: 5,
-					link: '/main',
-					title: '전문가집들이',
-				},
-				{
-					id: 6,
-					link: '/main',
-					title: '셀프가이드',
-				},
-				{
-					id: 7,
-					link: '/main',
-					title: '질문과답변',
-				},
-				{
-					id: 8,
-					link: '/main',
-					title: '이벤트',
-				},
-			],
+			// sidebarItems: [
+			// 	{
+			// 		id: 1,
+			// 		link: '/main',
+			// 		title: '홈',
+			// 	},
+			// 	{
+			// 		id: 2,
+			// 		link: '/main',
+			// 		title: '사진',
+			// 	},
+			// 	{
+			// 		id: 3,
+			// 		link: '/main',
+			// 		title: '집들이',
+			// 	},
+			// 	{
+			// 		id: 4,
+			// 		link: '/main',
+			// 		title: '노하우',
+			// 	},
+			// 	{
+			// 		id: 5,
+			// 		link: '/main',
+			// 		title: '전문가집들이',
+			// 	},
+			// 	{
+			// 		id: 6,
+			// 		link: '/main',
+			// 		title: '셀프가이드',
+			// 	},
+			// 	{
+			// 		id: 7,
+			// 		link: '/main',
+			// 		title: '질문과답변',
+			// 	},
+			// 	{
+			// 		id: 8,
+			// 		link: '/main',
+			// 		title: '이벤트',
+			// 	},
+			// ],
 			drawerItems: [
 				{
 					id: 1,
-					title: '카테고리',
+					text: '스토어',
+					drawerList: [
+						{
+							id: 1,
+							title: '카테고리',
+							link: '/main',
+						},
+						{
+							id: 2,
+							title: '신혼가구',
+							link: '/main',
+						},
+						{
+							id: 3,
+							title: '베스트',
+							link: '/main',
+						},
+						{
+							id: 4,
+							title: '오늘의딜',
+							link: '/main',
+						},
+						{
+							id: 5,
+							title: '연휴특가',
+							link: '/main',
+						},
+						{
+							id: 6,
+							title: '월동준비',
+							link: '/main',
+						},
+						{
+							id: 7,
+							title: '리퍼마켓',
+							link: '/main',
+						},
+						{
+							id: 8,
+							title: '기획전',
+							icon: 'ic-new',
+							link: '/main',
+						},
+					],
 				},
 				{
 					id: 2,
-					title: '신혼가구',
+					text: '커뮤니티',
+					drawerList: [
+						{
+							id: 1,
+							title: '카테고리',
+						},
+						{
+							id: 2,
+							title: '신혼가구',
+						},
+						{
+							id: 3,
+							title: '베스트',
+						},
+						{
+							id: 4,
+							title: '오늘의딜',
+						},
+						{
+							id: 5,
+							title: '연휴특가',
+						},
+						{
+							id: 6,
+							title: '월동준비',
+						},
+						{
+							id: 7,
+							title: '리퍼마켓',
+						},
+						{
+							id: 8,
+							title: '기획전',
+							icon: 'ic-new',
+						},
+					],
 				},
 				{
 					id: 3,
-					title: '베스트',
-				},
-				{
-					id: 4,
-					title: '오늘의딜',
-				},
-				{
-					id: 5,
-					title: '연휴특가',
-				},
-				{
-					id: 6,
-					title: '월동준비',
-				},
-				{
-					id: 7,
-					title: '리퍼마켓',
-				},
-				{
-					id: 8,
-					title: '기획전',
-					icon: 'ic-new',
-				},
-			],
-			drawerItemsTwo: [
-				{
-					id: 1,
-					title: '홈',
-				},
-				{
-					id: 2,
-					title: '인테리어시공',
-				},
-				{
-					id: 3,
-					title: '이사',
-				},
-				{
-					id: 4,
-					title: '설치수리',
-				},
-				{
-					id: 5,
-					title: '우리동네아파트',
-				},
-			],
-			drawerItemsMenu: [
-				{
-					id: 1,
-					title: '마이페이지',
-					icon: 'ic-new',
-				},
-				{
-					id: 2,
-					title: '나의 쇼핑',
-				},
-				{
-					id: 3,
-					title: '스크랩북',
-				},
-				{
-					id: 4,
-					title: '알림',
-				},
-				{
-					id: 5,
-					title: '이벤트',
-				},
-				{
-					id: 6,
-					title: '사진 올리기',
-				},
-				{
-					id: 7,
-					title: '집들이 글쓰기',
-				},
-				{
-					id: 8,
-					title: '노하우 글쓰기',
-				},
-				{
-					id: 9,
-					title: '상품 리뷰 쓰기',
-				},
-				{
-					id: 10,
-					title: '시공 전문가 리뷰 쓰기',
-				},
-				{
-					id: 11,
-					title: '인테리어 질문하기',
-				},
-				{
-					id: 12,
-					title: '고객센터',
+					text: '맞춤업체찾기',
+					drawerList: [
+						{
+							id: 1,
+							title: '카테고리',
+						},
+						{
+							id: 2,
+							title: '신혼가구',
+						},
+						{
+							id: 3,
+							title: '베스트',
+						},
+						{
+							id: 4,
+							title: '오늘의딜',
+						},
+						{
+							id: 5,
+							title: '연휴특가',
+						},
+						{
+							id: 6,
+							title: '월동준비',
+						},
+						{
+							id: 7,
+							title: '리퍼마켓',
+						},
+						{
+							id: 8,
+							title: '기획전',
+							icon: 'ic-new',
+						},
+					],
 				},
 			],
 		};

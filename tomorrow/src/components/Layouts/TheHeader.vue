@@ -3,7 +3,7 @@
 		<div class="gnb">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-4 md-12">
 						<div class="gnb-wrapper">
 							<div class="gnb-left">
 								<h1 class="logo">
@@ -208,6 +208,7 @@ export default {
 			iconClass: 'gnb-icon-button is-menu sm-only',
 			iconMenu: 'ic-menu',
 			iconAria: '메뉴 열기 버튼',
+			title: '야야야야',
 		};
 	},
 	computed: {
