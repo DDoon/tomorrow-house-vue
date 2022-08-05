@@ -3,14 +3,10 @@
 		<div class="gnb">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4 md-12">
+					<div class="col-sm-4">
 						<div class="gnb-wrapper">
 							<div class="gnb-left">
-								<h1 class="logo">
-									<a href="/">
-										<img src="@/assets/images/logo.svg" alt="내일의 집" />
-									</a>
-								</h1>
+								<CommonLogo />
 
 								<nav class="gnb-nav sm-hidden">
 									<h2 class="visually-hidden">메뉴</h2>
@@ -119,7 +115,7 @@
 												alt="사달라 아저씨"
 											/> -->
 										</button>
-
+										<!-- 
 										<div class="my-menu-content">
 											<ul class="my-menu-list">
 												<li class="my-menu-item">
@@ -135,7 +131,7 @@
 													<button type="button">로그아웃</button>
 												</li>
 											</ul>
-										</div>
+										</div> -->
 									</div>
 								</div>
 
@@ -161,6 +157,12 @@
                       <a href="/">회원가입</a>
                     </div>
                   </div> -->
+								<CommonIcon
+									:iconClass="btnClass"
+									:btnText="btnText"
+									:iconAria="btnAria"
+									:iconShapeRight="icChevron"
+								/>
 							</div>
 						</div>
 					</div>
@@ -178,9 +180,10 @@ import TheLnb from '@/components/Layouts/TheLnb.vue';
 import TheSidebar from '@/components/Layouts/TheSidebar.vue';
 import TheOverlay from '@/components/Layouts/TheOverlay.vue';
 import CommonIcon from '@/components/Common/CommonIcon.vue';
+import CommonLogo from '../Common/CommonLogo.vue';
 
 export default {
-	components: { TheLnb, TheSidebar, TheOverlay, CommonIcon },
+	components: { TheLnb, TheSidebar, TheOverlay, CommonIcon, CommonLogo },
 	name: 'TheHeader',
 	data() {
 		return {
@@ -190,6 +193,10 @@ export default {
 			iconMenu: 'ic-menu',
 			iconAria: '메뉴 열기 버튼',
 			title: '야야야야',
+			btnClass: 'btn-primary btn-40 sm-hidden',
+			btnText: '글쓰기',
+			btnAria: '글쓰기 버튼',
+			icChevron: 'ic-chevron',
 			searchList: [
 				{
 					id: 1,

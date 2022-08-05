@@ -1,11 +1,7 @@
 <template>
 	<aside class="sidebar sm-only">
 		<header class="sidebar-header">
-			<h1 class="logo">
-				<a href="/">
-					<img src="@/assets/images/logo.svg" alt="내일의 집" />
-				</a>
-			</h1>
+			<CommonLogo />
 
 			<!-- NOTE: 로그인을 한 경우  -->
 			<!-- <div class="sidebar-user">
@@ -80,9 +76,10 @@
 
 <script>
 import CommonIcon from '@/components/Common/CommonIcon.vue';
+import CommonLogo from '../Common/CommonLogo.vue';
 
 export default {
-	components: { CommonIcon },
+	components: { CommonIcon, CommonLogo },
 	name: 'TheSidebar',
 	props: {
 		isActive: {
