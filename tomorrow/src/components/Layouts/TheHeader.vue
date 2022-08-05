@@ -79,30 +79,13 @@
 										<i class="ic-search"></i>
 									</button>
 
-									<a
-										class="gnb-icon-button sm-hidden"
-										href="/"
-										aria-label="스크랩북 페이지로 이동"
-									>
-										<i class="ic-bookmark"></i>
-									</a>
-
-									<a
-										class="gnb-icon-button sm-hidden"
-										href="/"
-										aria-label="내 소식 페이지로 이동"
-									>
-										<i class="ic-bell"></i>
-									</a>
-
-									<a
-										class="gnb-icon-button is-cart"
-										href="/"
-										aria-label="장바구니 페이지로 이동"
-									>
-										<i class="ic-cart"></i>
-										<strong class="badge">5</strong>
-									</a>
+									<CommonAnchorIcon
+										v-for="item in anchorIconList"
+										:key="item.id"
+										:anchorClass="item.anchorClass"
+										:anchorAriaLabel="item.anchorAriaLabel"
+										:anchorIcon="item.anchorIcon"
+									/>
 
 									<div class="my-menu sm-hidden">
 										<button
@@ -170,6 +153,15 @@
 			</div>
 		</div>
 		<TheLnb />
+		<div class="breadcrumb">
+			<CommonAnchorIcon
+				v-for="item in breadcrumbList"
+				:key="item.id"
+				:anchorAriaLabel="item.anchorAriaLabel"
+				:anchorText="item.anchorText"
+				:anchorIcon="item.anchorIcon"
+			/>
+		</div>
 		<TheSidebar :class="isActiveSidebar" :isActive="isActive" />
 		<TheOverlay :class="isActiveSidebar" @offSidebar="offSidebar" />
 	</header>
@@ -180,10 +172,18 @@ import TheLnb from '@/components/Layouts/TheLnb.vue';
 import TheSidebar from '@/components/Layouts/TheSidebar.vue';
 import TheOverlay from '@/components/Layouts/TheOverlay.vue';
 import CommonIcon from '@/components/Common/CommonIcon.vue';
-import CommonLogo from '../Common/CommonLogo.vue';
+import CommonLogo from '@/components/Common/CommonLogo.vue';
+import CommonAnchorIcon from '@/components/Common/CommonAnchorIcon.vue';
 
 export default {
-	components: { TheLnb, TheSidebar, TheOverlay, CommonIcon, CommonLogo },
+	components: {
+		TheLnb,
+		TheSidebar,
+		TheOverlay,
+		CommonIcon,
+		CommonLogo,
+		CommonAnchorIcon,
+	},
 	name: 'TheHeader',
 	data() {
 		return {
@@ -218,6 +218,52 @@ export default {
 				{
 					id: 3,
 					text: '맞춤업체찾기',
+				},
+			],
+			anchorIconList: [
+				{
+					id: 1,
+					anchorClass: 'gnb-icon-button sm-hidden',
+					anchorAriaLabel: '스크랩북 페이지로 이동',
+					anchorIcon: 'ic-bookmark',
+				},
+				{
+					id: 2,
+					anchorClass: 'gnb-icon-button sm-hidden',
+					anchorAriaLabel: '내 소식 페이지로 이동',
+					anchorIcon: 'ic-bell',
+				},
+				{
+					id: 3,
+					anchorClass: 'gnb-icon-button sm-hidden',
+					anchorAriaLabel: '장바구니 페이지로 이동',
+					anchorIcon: 'ic-cart',
+				},
+			],
+			breadcrumbList: [
+				{
+					id: 1,
+					anchorAriaLabel: '가전 페이지로 이동',
+					anchorText: '가전',
+					anchorIcon: 'ic-chevron',
+				},
+				{
+					id: 2,
+					anchorAriaLabel: '계절가전 페이지로 이동',
+					anchorText: '계절가전',
+					anchorIcon: 'ic-chevron',
+				},
+				{
+					id: 3,
+					anchorAriaLabel: '전기히터/온풍기 페이지로 이동',
+					anchorText: '전기히터/온풍기',
+					anchorIcon: 'ic-chevron',
+				},
+				{
+					id: 4,
+					anchorAriaLabel: '전기히터 페이지로 이동',
+					anchorText: '전기히터',
+					anchorIcon: 'ic-chevron',
 				},
 			],
 		};
