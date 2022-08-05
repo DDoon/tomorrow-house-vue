@@ -15,18 +15,20 @@
 								<nav class="gnb-nav sm-hidden">
 									<h2 class="visually-hidden">메뉴</h2>
 									<ul class="gnb-nav-list">
-										<li class="gnb-nav-item"><a href="/">커뮤니티</a></li>
-										<li class="gnb-nav-item is-active">
-											<a href="/">스토어</a>
+										<li
+											v-for="item in navList"
+											:key="item.id"
+											class="gnb-nav-item"
+										>
+											<a href="/">{{ item.text }}</a>
 										</li>
-										<li class="gnb-nav-item"><a href="/">맞춤업체찾기</a></li>
 									</ul>
 								</nav>
 
 								<CommonIcon
 									@click.native="toggleSidebar"
 									:iconClass="iconClass"
-									:iconShape="iconMenu"
+									:iconShapeLeft="iconMenu"
 									:iconAria="iconAria"
 									type="button"
 								/>
@@ -51,41 +53,20 @@
 
 										<div class="search-history-content">
 											<ol class="search-history-list">
-												<li class="search-history-item">
+												<li
+													v-for="item in searchList"
+													:key="item.id"
+													class="search-history-item"
+												>
 													<button class="word-button" type="button">
-														김버그
+														{{ item.text }}
 													</button>
-													<button
-														class="delete-button"
+													<CommonIcon
+														:iconClass="item.btnClass"
+														:iconAria="item.iconAria"
+														:iconShapeLeft="item.iconClose"
 														type="button"
-														aria-label="검색어 삭제"
-													>
-														<i class="ic-close"></i>
-													</button>
-												</li>
-												<li class="search-history-item">
-													<button class="word-button" type="button">
-														버그
-													</button>
-													<button
-														class="delete-button"
-														type="button"
-														aria-label="검색어 삭제"
-													>
-														<i class="ic-close"></i>
-													</button>
-												</li>
-												<li class="search-history-item">
-													<button class="word-button" type="button">
-														튕김버그
-													</button>
-													<button
-														class="delete-button"
-														type="button"
-														aria-label="검색어 삭제"
-													>
-														<i class="ic-close"></i>
-													</button>
+													/>
 												</li>
 											</ol>
 										</div>
@@ -209,6 +190,29 @@ export default {
 			iconMenu: 'ic-menu',
 			iconAria: '메뉴 열기 버튼',
 			title: '야야야야',
+			searchList: [
+				{
+					id: 1,
+					btnClass: 'delete-button',
+					iconAria: '검색어 삭제',
+					iconClose: 'ic-close',
+					text: '검색내용',
+				},
+			],
+			navList: [
+				{
+					id: 1,
+					text: '커뮤니티',
+				},
+				{
+					id: 2,
+					text: '스토어',
+				},
+				{
+					id: 3,
+					text: '맞춤업체찾기',
+				},
+			],
 		};
 	},
 	computed: {

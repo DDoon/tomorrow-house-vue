@@ -1,7 +1,8 @@
 <template>
 	<button :class="iconClass" :aria-label="iconAria">
+		<i :class="iconShapeLeft" aria-hidden="true"></i>
 		{{ btnText }}
-		<i :class="iconShape" aria-hidden="true"></i>
+		<i :class="iconShapeRight" aria-hidden="true"></i>
 	</button>
 </template>
 
@@ -13,9 +14,11 @@ export default {
 			type: String,
 			required: true,
 		},
-		iconShape: {
+		iconShapeLeft: {
 			type: String,
-			required: true,
+		},
+		iconShapeRight: {
+			type: String,
 		},
 		iconAria: {
 			type: String,

@@ -8,20 +8,20 @@
 			</h1>
 
 			<!-- NOTE: 로그인을 한 경우  -->
-			<div class="sidebar-user">
+			<!-- <div class="sidebar-user">
 				<a href="/">
 					<div class="avatar-24">
 						<img src="@/assets/images/img-user-01.jpg" alt="사달라 아저씨" />
 					</div>
 					<strong class="username">사달라</strong>
 				</a>
-			</div>
+			</div> -->
 
 			<!-- NOTE: 로그인을 하지 않은 경우  -->
-			<!-- <div class="sidebar-auth">
-          <a class="btn-outlined btn-40" href="/">로그인</a>
-          <a class="btn-primary btn-40" href="/">회원가입</a>
-        </div> -->
+			<div class="sidebar-auth">
+				<a class="btn-outlined btn-40" href="/">로그인</a>
+				<a class="btn-primary btn-40" href="/">회원가입</a>
+			</div>
 		</header>
 
 		<nav class="sidebar-nav">
@@ -32,11 +32,15 @@
 				:class="isActiveDrawer"
 				class="drawer-menu is-community"
 			>
-				<button @click="toggleDrawer" class="drawer-menu-button" type="button">
-					<i class="ic-community" aria-hidden></i>
-					{{ item.text }}
-					<i class="ic-chevron" aria-hidden></i>
-				</button>
+				<CommonIcon
+					@click="toggleDrawer"
+					:iconClass="item.class"
+					:iconAria="item.aria"
+					:iconShapeLeft="item.iconLeft"
+					:iconShapeRight="item.iconRight"
+					:btnText="item.text"
+					type="button"
+				></CommonIcon>
 
 				<div class="drawer-menu-content">
 					<ul class="drawer-menu-list">
@@ -54,82 +58,6 @@
 					</ul>
 				</div>
 			</div>
-
-			<!-- <div :class="isActiveDrawer" class="drawer-menu is-community">
-				<button @click="toggleDrawer" class="drawer-menu-button" type="button">
-					<i class="ic-community" aria-hidden></i>
-					커뮤니티
-					<i class="ic-chevron" aria-hidden></i>
-				</button>
-
-				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list">
-						<li
-							v-for="item in sidebarItems"
-							:key="item.id"
-							:isActive2="isActive2"
-							class="drawer-menu-item"
-						>
-							<a :to="item.link"
-								>{{ item.title }}
-								<i :class="item.icon" lang="en" aria-label="New"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div> -->
-
-			<!-- <div :class="isActiveDrawer" class="drawer-menu is-store">
-				<button @click="toggleDrawer" class="drawer-menu-button" type="button">
-					<i class="ic-store" aria-hidden></i>
-					스토어
-					<i class="ic-chevron" aria-hidden></i>
-				</button>
-
-				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list">
-						<li
-							v-for="item in drawerItems"
-							:key="item.id"
-							:isActive2="isActive2"
-							class="drawer-menu-item"
-						>
-							<a href="/"
-								>{{ item.title }}
-								<i :class="item.icon" lang="en" aria-label="New"></i
-							></a>
-						</li>
-					</ul>
-				</div>
-			</div> -->
-
-			<!-- <div :class="isActiveDrawer" class="drawer-menu is-expert">
-				<button
-					@click="toggleDrawer"
-					:isActive2="isActive2"
-					class="drawer-menu-button"
-					type="button"
-				>
-					<i class="ic-expert" aria-hidden></i>
-					맞춤업체찾기
-					<i class="ic-chevron" aria-hidden></i>
-				</button>
-
-				<div class="drawer-menu-content">
-					<ul class="drawer-menu-list">
-						<li
-							v-for="item in drawerItemsTwo"
-							:key="item.id"
-							class="drawer-menu-item"
-						>
-							<a href="/"
-								>{{ item.title }}
-								<i :class="item.icon" lang="en" aria-label="New"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div> -->
 
 			<!-- NOTE: 로그인을 한 경우  -->
 			<!-- <div class="sidebar-user-menu">
@@ -151,7 +79,10 @@
 </template>
 
 <script>
+import CommonIcon from '@/components/Common/CommonIcon.vue';
+
 export default {
+	components: { CommonIcon },
 	name: 'TheSidebar',
 	props: {
 		isActive: {
@@ -162,51 +93,14 @@ export default {
 	data() {
 		return {
 			isActive2: false,
-			// sidebarItems: [
-			// 	{
-			// 		id: 1,
-			// 		link: '/main',
-			// 		title: '홈',
-			// 	},
-			// 	{
-			// 		id: 2,
-			// 		link: '/main',
-			// 		title: '사진',
-			// 	},
-			// 	{
-			// 		id: 3,
-			// 		link: '/main',
-			// 		title: '집들이',
-			// 	},
-			// 	{
-			// 		id: 4,
-			// 		link: '/main',
-			// 		title: '노하우',
-			// 	},
-			// 	{
-			// 		id: 5,
-			// 		link: '/main',
-			// 		title: '전문가집들이',
-			// 	},
-			// 	{
-			// 		id: 6,
-			// 		link: '/main',
-			// 		title: '셀프가이드',
-			// 	},
-			// 	{
-			// 		id: 7,
-			// 		link: '/main',
-			// 		title: '질문과답변',
-			// 	},
-			// 	{
-			// 		id: 8,
-			// 		link: '/main',
-			// 		title: '이벤트',
-			// 	},
-			// ],
+
 			drawerItems: [
 				{
 					id: 1,
+					class: 'drawer-menu-button',
+					aria: '메뉴열기',
+					iconLeft: 'ic-store',
+					iconRight: 'ic-chevron',
 					text: '스토어',
 					drawerList: [
 						{
@@ -254,6 +148,11 @@ export default {
 				},
 				{
 					id: 2,
+					class: 'drawer-menu-button',
+					aria: '메뉴열기',
+					iconLeft: 'ic-community',
+					iconRight: 'ic-chevron',
+
 					text: '커뮤니티',
 					drawerList: [
 						{
@@ -293,6 +192,10 @@ export default {
 				},
 				{
 					id: 3,
+					class: 'drawer-menu-button',
+					aria: '메뉴열기',
+					iconLeft: 'ic-expert',
+					iconRight: 'ic-chevron',
 					text: '맞춤업체찾기',
 					drawerList: [
 						{
