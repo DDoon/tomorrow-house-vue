@@ -192,7 +192,6 @@ export default {
 			iconClass: 'gnb-icon-button is-menu sm-only',
 			iconMenu: 'ic-menu',
 			iconAria: '메뉴 열기 버튼',
-			title: '야야야야',
 			btnClass: 'btn-primary btn-40 sm-hidden',
 			btnText: '글쓰기',
 			btnAria: '글쓰기 버튼',
@@ -235,7 +234,7 @@ export default {
 				},
 				{
 					id: 3,
-					anchorClass: 'gnb-icon-button sm-hidden',
+					anchorClass: 'gnb-icon-button',
 					anchorAriaLabel: '장바구니 페이지로 이동',
 					anchorIcon: 'ic-cart',
 				},
