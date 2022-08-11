@@ -1,15 +1,18 @@
 <template>
-	<button :class="btnClass" :style="btnWidth">{{ btnText }}</button>
+	<button :class="btnClass" :style="btnWidth">
+		{{ btnText }}
+	</button>
 </template>
+
 <script>
 export default {
-	name: 'CommonButton',
+	name: 'AtomsButton',
 	props: {
 		btnClass: {
-			width: null,
+			type: String,
 		},
 		btnWidth: {
-			type: Number,
+			type: String,
 			width: null,
 		},
 		btnText: {

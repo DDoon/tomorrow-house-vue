@@ -1,7 +1,8 @@
 <template>
 	<div id="app">
 		<TheHeader />
-
+		<ProductDetailReviewList />
+		<product-detail-page />
 		<TheFooter />
 	</div>
 </template>
@@ -10,10 +11,16 @@
 import { Component, Vue } from 'vue-property-decorator';
 import TheFooter from '@/components/Layouts/TheFooter.vue';
 import TheHeader from '@/components/Layouts/TheHeader.vue';
-import CommonAnchorIcon from '@/components/Common/CommonAnchorIcon.vue';
+import ProductDetailReviewList from '@/components/ProductDetail/ProductDetailReviewList.vue';
+import ProductDetailPage from './view/ProductDetailPage.vue';
 
 @Component({
-	components: { TheHeader, TheFooter, CommonAnchorIcon },
+	components: {
+		TheHeader,
+		TheFooter,
+		ProductDetailReviewList,
+		ProductDetailPage,
+	},
 })
 export default class App extends Vue {}
 </script>
