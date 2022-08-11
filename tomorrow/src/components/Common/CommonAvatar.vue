@@ -1,11 +1,19 @@
 <template>
-	<div>
-		<img src="@/assets/images/img-user-01.jpg" alt="사용자 이미지" />
+	<div :class="avatarClass">
+		<CommonImg />
 	</div>
 </template>
 
 <script>
+import CommonImg from './CommonImg.vue';
 export default {
 	name: 'CommonAvatar',
+	components: { CommonImg },
+	props: {
+		avatarClass: {
+			type: String,
+			required: true,
+		},
+	},
 };
 </script>
